@@ -1,0 +1,18 @@
+FROM alpine:latest
+
+RUN apk add --no-cache wget unzip
+WORKDIR /maps
+
+# Copy maps from host to volume or use download links at run time
+CMD set -e && \
+    if [ -d "/host_maps" ]; then \
+        cp -R /host_maps/* .; \
+    fi && \
+    if [ -n "$MAP_LINKS" ]; then \
+        set -- $MAP_LINKS && \
+        for LINK in "$@"; do \
+            wget $LINK -O maps.zip && \
+            unzip maps.zip -d . && \
+            rm maps.zip; \
+        done; \
+    fi

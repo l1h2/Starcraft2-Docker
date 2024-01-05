@@ -1,0 +1,12 @@
+FROM luguenin/starcraft2-base:python_3.11
+
+RUN pip install --upgrade burnysc2
+
+COPY . .
+
+# Change ownership to allow development in container
+USER root
+RUN chown -R botuser:botuser ./new_bot
+USER botuser
+
+CMD ["bash"]

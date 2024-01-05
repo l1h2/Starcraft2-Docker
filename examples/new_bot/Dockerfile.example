@@ -1,0 +1,7 @@
+FROM luguenin/starcraft2-base:python_3.11
+
+RUN pip install --upgrade burnysc2
+
+COPY ./worker_rush.py .
+
+CMD ["python", "worker_rush.py"]

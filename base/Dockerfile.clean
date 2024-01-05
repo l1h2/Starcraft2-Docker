@@ -1,0 +1,18 @@
+FROM debian:bullseye-slim
+
+RUN apt-get update && apt-get install -y wget unzip
+
+WORKDIR /root
+
+# Install StarCraft II
+RUN wget http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip && \
+    unzip -P iagreetotheeula SC2.4.10.zip -d ./ && \
+    rm SC2.4.10.zip
+
+# Rename to lowercase for the python-sc2 library
+RUN mv StarCraftII/Maps StarCraftII/maps
+
+RUN apt-get purge -y wget unzip && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*

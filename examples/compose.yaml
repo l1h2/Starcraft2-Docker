@@ -1,0 +1,24 @@
+version: "3"
+services:
+  development:
+    image: luguenin/starcraft2-base:development
+    volumes:
+      - maps:/home/botuser/StarCraftII/maps
+    stdin_open: true
+    tty: true
+
+  execution:
+    image: luguenin/starcraft2-base:example
+    volumes:
+      - maps:/home/botuser/StarCraftII/maps
+
+  maps:
+    image: luguenin/starcraft2-map_updater:latest
+    volumes:
+      - maps:/maps
+      - "c:/Program Files (x86)/StarCraft II/Maps:/host_maps"
+    environment:
+      - MAP_LINKS=https://aiarena.net/wiki/184/plugin/attachments/download/35/
+
+volumes:
+  maps:
