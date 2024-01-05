@@ -52,7 +52,7 @@ You can use the Dockerfiles to create your own images, or you can use the images
 
   - `development`: Built from [Dockerfile.dev](examples/Dockerfile.dev), this image is meant to showcase a development environment for Starcraft 2 bots. It uses the `python_3.11` image and comes with the [BurnySC2](https://github.com/BurnySc2/python-sc2/) framework, as well as the example worker rush bot.
 
-  - `example`: Built from [Dockerfile.example](examples/new_bot/Dockerfile.example), this image an runs the example worker rush bot for the [BurnySC2](https://github.com/BurnySc2/python-sc2/#example) framework.
+  - `example`: Built from [Dockerfile.example](examples/new_bot/Dockerfile.example), this image runs the example worker rush bot for the [BurnySC2](https://github.com/BurnySc2/python-sc2/#example) framework.
 
 There are currently no plans to add images for other languages, but if you want to add your own, you can create a pull request with your own Dockerfile or open an issue requesting a new image.
 
